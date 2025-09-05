@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { API_BASE_URL } from "../api";
 import Cards from "./Cards";
 function Course() {
   const [book, setBook] = useState([]);
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+  const res = await axios.get(`${API_BASE_URL}/book`);
         console.log(res.data);
         setBook(res.data);
       } catch (error) {

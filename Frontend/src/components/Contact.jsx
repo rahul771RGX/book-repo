@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { useState } from "react";
+import { API_BASE_URL } from "../api";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -19,7 +20,7 @@ function Contact() {
     setSuccess("");
     setError("");
     try {
-  await axios.post("http://localhost:4001/contact", form);
+  await axios.post(`${API_BASE_URL}/contact`, form);
       setSuccess("Thank you for contacting us! We'll get back to you soon.");
       setForm({ name: "", email: "", message: "" });
     } catch (err) {

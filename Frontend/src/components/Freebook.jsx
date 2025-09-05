@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 
 import axios from "axios";
+import { API_BASE_URL } from "../api";
 
 import Cards from "./Cards";
 function Freebook() {
@@ -12,7 +13,7 @@ function Freebook() {
   useEffect(() => {
     const getBook = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+  const res = await axios.get(`${API_BASE_URL}/book`);
 
         const data = res.data.filter((data) => data.category === "Free");
         console.log(data);

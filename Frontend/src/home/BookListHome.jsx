@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_BASE_URL } from "../api";
 import Cards from "../components/Cards";
 
 function BookListHome() {
@@ -7,7 +8,7 @@ function BookListHome() {
   useEffect(() => {
     const getBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/book");
+  const res = await axios.get(`${API_BASE_URL}/book`);
         setBooks(res.data.slice(0, 4)); // Show only a few books on home
       } catch (error) {
         console.log(error);

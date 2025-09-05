@@ -2,6 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { API_BASE_URL } from "../api";
 function Signup() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Signup() {
       password: data.password,
     };
     await axios
-      .post("http://localhost:4001/user/signup", userInfo)
+  .post(`${API_BASE_URL}/user/signup`, userInfo)
       .then((res) => {
         console.log(res.data);
         if (res.data) {
