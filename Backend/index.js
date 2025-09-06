@@ -12,13 +12,15 @@ const app = express();
 
 // Set allowed origin for CORS (uses env variable for production)
 const allowedOrigins = [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://book-store-ap.netlify.app"
 ];
 if (process.env.FRONTEND_URL) {
     allowedOrigins.push(process.env.FRONTEND_URL);
 }
 app.use(cors({
     origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true
 }));
 app.use(helmet());
